@@ -16,11 +16,11 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.log(contact);
       break;
     case "add":
-      const newContact = await contactsOperations.addContact(
+      const newContact = await contactsOperations.addContact({
         name,
         email,
-        phone
-      );
+        phone,
+      });
       console.log(newContact);
       break;
     case "remove":
@@ -35,18 +35,3 @@ const arr = hideBin(process.argv);
 const { argv } = yargs(arr);
 
 invokeAction(argv);
-// *Get all contacts
-// invokeAction({ action: "list" });
-// *Get contact by id
-// const id = "4";
-// invokeAction({ action: "get", id });
-// *Add contact
-// const contactToAdd = {
-//   name: "Danila",
-//   email: "Danila.ante@vestibul.com.ua",
-//   phone: "(999) 999-9999",
-// };
-// invokeAction({ action: "add", data: contactToAdd });
-// *Remove contact
-// const idToRemove = "4";
-// invokeAction({ action: "remove", id: idToRemove });
